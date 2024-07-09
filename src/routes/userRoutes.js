@@ -9,9 +9,9 @@ import { ChangeUserPassword } from "../controllers/user/changeUserPassword.js";
 import { GetCurrent } from "../controllers/user/getCurrentUser.js";
 import { UpdateUserCoverImage } from "../controllers/user/updateUserCoverImage.js";
 import { UpdateUserAvatar } from "../controllers/user/updateUserAvatar.js";
-import { UpdateAccountDetail } from "../controllers/user/UpdateAccountDetail.js";
 import { GetUserWatchHistory } from "../controllers/user/getUserWatchHistory.js";
 import { GetUserChannelProfile } from "../controllers/user/getUserChannelProfile.js";
+import { UpdateAccountDetail } from "../controllers/user/updateAccountDetail.js";
 
 const router = Router();
 
