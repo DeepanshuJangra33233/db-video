@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middlewares/multerMiddleware.js";
-import { verifyJwt } from "../middlewares/authMiddleware.js";
+import { verifyJWT } from "../middlewares/authMiddleware.js";
 import {
   deleteVideo,
   getAllVideos,
@@ -8,10 +8,10 @@ import {
   publishAVideo,
   togglePublishStatus,
   updateVideo,
-} from "../controller/video.controller.js";
+} from "../controllers/videoController.js";
 
 const router = Router();
-router.use(verifyJwt); // Apply VerifyJwt to all routes in  this file
+router.use(verifyJWT); // Apply verifyJWT to all routes in  this file
 
 router
   .route("/")

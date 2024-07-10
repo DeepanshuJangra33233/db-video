@@ -2,8 +2,8 @@ import mongoose, { isValidObjectId } from "mongoose";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
-import { Tweet } from "../models/twitter.model.js";
-import { Like } from "../models/likes.model.js";
+import { Tweet } from "../models/tweetModel.js";
+import { Like } from "../models/likeModel.js";
 
 const createTweet = asyncHandler(async (req, res) => {
   const { content } = req.body;

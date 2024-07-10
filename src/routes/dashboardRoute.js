@@ -1,12 +1,12 @@
 import Router from "express";
-import { verifyJwt } from "../middlewares/authMiddleware.js";
+import { verifyJWT } from "../middlewares/authMiddleware.js";
 import {
   getChannelStats,
   getChannelVideos,
-} from "../controller/dashboard.controller.js";
+} from "../controllers/dashboardController.js";
 
 const router = Router();
-router.use(verifyJwt);
+router.use(verifyJWT);
 
 router.route("/").get(getChannelVideos);
 router.route("/stats").get(getChannelStats);

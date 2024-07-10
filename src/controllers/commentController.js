@@ -2,9 +2,9 @@ import mongoose, { isValidObjectId } from "mongoose";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
-import { Video } from "../models/video.model.js";
-import { Comment } from "../models/comments.model.js";
-import { Like } from "../models/likes.model.js";
+import { Video } from "../models/videoModel.js";
+import { Comment } from "../models/commentModel.js";
+import { Like } from "../models/likeModel.js";
 
 const getVideoComments = asyncHandler(async (req, res) => {
   const { videoId } = req.params;

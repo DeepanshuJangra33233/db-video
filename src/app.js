@@ -18,8 +18,24 @@ app.use(cookieParser());
 
 // IMPORT ROUTES
 import userRoutes from "./routes/userRoutes.js";
+import videoRouter from "./routes/videoRoute.js";
+import likeRouter from "./routes/likeRoute.js";
+import commentRouter from "./routes/commentRoute.js";
+import tweetRouter from "./routes/tweetRoute.js";
+import playlistRouter from "./routes/playlistRoute.js";
+import subsRouter from "./routes/subscriptionRoute.js";
+import health from "./routes/healthCheckRoute.js";
+import dashboard from "./routes/dashboardRoute.js";
 
 // ROUTES DECLARATION
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/videos", videoRouter);
+app.use("/api/v1/likes", likeRouter);
+app.use("/api/v1/comments", commentRouter);
+app.use("/api/v1/tweets", tweetRouter);
+app.use("/api/v1/playlist", playlistRouter);
+app.use("/api/v1/subscription", subsRouter);
+app.use("/api/v1/health", health);
+app.use("/api/v1/dashboard", dashboard);
 
 export { app };

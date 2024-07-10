@@ -1,9 +1,8 @@
-import mongoose from "mongoose";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
-import { Video } from "../models/video.model.js";
-import { Subscription } from "../models/subs.model.js";
+import { Video } from "../models/videoModel.js";
+import { Subscription } from "../models/subscriptionModel.js";
 
 const getChannelStats = asyncHandler(async (req, res) => {
   const totalSubscriber = await Subscription.aggregate([

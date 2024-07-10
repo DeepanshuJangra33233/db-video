@@ -1,8 +1,8 @@
-import { Video } from "../models/video.model.js";
-import { User } from "../models/user.model.js";
+import { Video } from "../models/videoModel.js";
+import { User } from "../models/userModel.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
-import { deleteFile, uploadOnCloudinary } from "../utils/cloudinary.js";
+import { deleteFile, uploadOnCloudinary } from "../utils/cloudnary.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import mongoose, { isValidObjectId } from "mongoose";
 

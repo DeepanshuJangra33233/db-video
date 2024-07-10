@@ -1,14 +1,14 @@
 import { Router } from "express";
-import { verifyJwt } from "../middlewares/authMiddleware.js";
+import { verifyJWT } from "../middlewares/authMiddleware.js";
 import {
   createTweet,
   deleteTweet,
   getUserTweet,
   updateTweet,
-} from "../controller/tweet.controller.js";
+} from "../controllers/tweetController.js";
 
 const router = Router();
-router.use(verifyJwt);
+router.use(verifyJWT);
 
 router.route("/:userId").get(getUserTweet);
 router.route("/t/:tweetId").patch(updateTweet).delete(deleteTweet);

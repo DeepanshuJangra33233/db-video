@@ -2,7 +2,7 @@ import mongoose, { isValidObjectId } from "mongoose";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
-import { Like } from "../models/likes.model.js";
+import { Like } from "../models/likeModel.js";
 
 const toggleVideoLikes = asyncHandler(async (req, res) => {
   const { videoId } = req.params;

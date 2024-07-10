@@ -1,14 +1,14 @@
 import { Router } from "express";
-import { verifyJwt } from "../middlewares/authMiddleware.js";
+import { verifyJWT } from "../middlewares/authMiddleware.js";
 import {
   addComment,
   deleteComment,
   getVideoComments,
   updateComment,
-} from "../controller/comment.controller.js";
+} from "../controllers/commentController.js";
 
 const router = Router();
-router.use(verifyJwt);
+router.use(verifyJWT);
 
 router.route("/:videoId").get(getVideoComments).post(addComment);
 router.route("/c/:commentId").patch(updateComment).delete(deleteComment);

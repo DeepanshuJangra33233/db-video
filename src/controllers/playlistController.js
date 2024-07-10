@@ -1,6 +1,6 @@
 import mongoose, { isValidObjectId } from "mongoose";
-import { Playlist } from "../models/playlist.model.js";
-import { Video } from "../models/video.model.js";
+import { Playlist } from "../models/playlistModel.js";
+import { Video } from "../models/videoModel.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
