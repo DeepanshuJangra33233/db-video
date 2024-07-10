@@ -24,7 +24,7 @@ import commentRouter from "./routes/commentRoute.js";
 import tweetRouter from "./routes/tweetRoute.js";
 import playlistRouter from "./routes/playlistRoute.js";
 import subsRouter from "./routes/subscriptionRoute.js";
-import healthCheckRoute from "./routes/healthCheckRoute.js";
+// import healthCheckRoute from "./routes/healthCheckRoute.js";
 import dashboard from "./routes/dashboardRoute.js";
 
 // ROUTES DECLARATION
@@ -35,7 +35,7 @@ app.use("/api/v1/comments", commentRouter);
 app.use("/api/v1/tweets", tweetRouter);
 app.use("/api/v1/playlist", playlistRouter);
 app.use("/api/v1/subscription", subsRouter);
-app.use("/api/v1/health", healthCheckRoute);
+// app.use("/api/v1/health", healthCheckRoute);
 app.use("/api/v1/dashboard", dashboard);
 
 export { app };
