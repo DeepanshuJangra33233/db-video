@@ -10,9 +10,9 @@ import {
 const router = Router();
 router.use(verifyJWT);
 
-router.route("/videos").get(getAllLikedVideo);
 router.route("/:videoId").post(toggleVideoLikes);
 router.route("/comment/:commentId").post(toggleCommentLike);
 router.route("/tweet/:tweetId").post(toggleTweetLike);
+router.route("/videos").get(getAllLikedVideo);
 
 export default router;
