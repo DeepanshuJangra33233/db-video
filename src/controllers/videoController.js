@@ -102,7 +102,7 @@ const getAllVideos = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(new ApiResponse(200, video, "Video Fetched Successfully"));
+    .json(new ApiResponse(200, "Video Fetched Successfully", video));
 });
 
 const publishAVideo = asyncHandler(async (req, res) => {
@@ -160,7 +160,7 @@ const publishAVideo = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(new ApiResponse(200, video, "Video Published Successfully"));
+    .json(new ApiResponse(200, "Video Published Successfully", video));
 });
 
 const getVideoById = asyncHandler(async (req, res) => {
@@ -280,7 +280,7 @@ const getVideoById = asyncHandler(async (req, res) => {
     },
   });
 
-  return res.status(200).json(new ApiResponse(400, video[0], "Video Fetched"));
+  return res.status(200).json(new ApiResponse(400, "Video Fetched", video[0]));
 });
 
 const updateVideo = asyncHandler(async (req, res) => {
@@ -353,7 +353,7 @@ const updateVideo = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(new ApiResponse(200, updateVideo, "Upadted Succesfully"));
+    .json(new ApiResponse(200, "Update Successfully", updateVideo));
 });
 
 const deleteVideo = asyncHandler(async (req, res) => {
@@ -382,7 +382,7 @@ const deleteVideo = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(new ApiResponse(200, deletedVideo, "Video Deleted Succeffully"));
+    .json(new ApiResponse(200, "Video Deleted Successfully", deletedVideo));
 });
 
 const togglePublishStatus = asyncHandler(async (req, res) => {
@@ -413,15 +413,11 @@ const togglePublishStatus = asyncHandler(async (req, res) => {
     throw new ApiError(501, "Can't Change Status");
   }
 
-  return res
-    .status(200)
-    .json(
-      new ApiResponse(
-        200,
-        { isPublished: updatedStatus.isPublished },
-        "Status updated Successfully"
-      )
-    );
+  return res.status(200).json(
+    new ApiResponse(200, "Status updated Successfully", {
+      isPublished: updatedStatus.isPublished,
+    })
+  );
 });
 
 export {
