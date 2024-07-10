@@ -1,9 +1,9 @@
-import mongoose, { isValidObjectId } from "mongoose";
+import { isValidObjectId } from "mongoose";
 import { Playlist } from "../models/playlistModel.js";
 import { Video } from "../models/videoModel.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 const createPlaylist = asyncHandler(async (req, res) => {
   const { name, description } = req.body;
@@ -322,11 +322,11 @@ const getUserPlaylist = asyncHandler(async (req, res) => {
 });
 
 export {
-  createPlaylist,
-  updatePlaylist,
-  deletePlaylist,
   addVideoToPlaylist,
-  removeVideoFromPlaylist,
+  createPlaylist,
+  deletePlaylist,
   getPlaylistById,
   getUserPlaylist,
+  removeVideoFromPlaylist,
+  updatePlaylist,
 };
