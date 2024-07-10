@@ -78,11 +78,7 @@ const getAllVideos = asyncHandler(async (req, res) => {
     }
   );
 
-  // console.log(pipeline)
-
   const videoDetail = Video.aggregate(pipeline);
-
-  // console.log(videoDetail)
 
   if (videoDetail.length < 1) {
     throw new ApiError(501, "Video not Found or Private");
@@ -94,7 +90,6 @@ const getAllVideos = asyncHandler(async (req, res) => {
   };
 
   const video = await Video.aggregatePaginate(videoDetail, options);
-  // console.log(video)
 
   if (!video) {
     throw new ApiError(501, "Video Cant List ");
@@ -126,28 +121,18 @@ const publishAVideo = asyncHandler(async (req, res) => {
   const videoFile = await uploadOnCloudinary(videoFileLocalPath);
   const thumbnail = await uploadOnCloudinary(thumbnailLocalPath);
 
-  // console.log( videoFile)
-  // console.log( thumbnail)
-
   if (!videoFile) {
     throw new ApiError(500, "Video can't Upload");
   }
   if (!thumbnail) {
     throw new ApiError(500, "Thumbnail can't Upload");
   }
-
   const video = await Video.create({
     title,
     description,
     duration: videoFile.duration,
-    videoFile: {
-      url: videoFile.url,
-      public_id: videoFile.public_id,
-    },
-    thumbnail: {
-      url: thumbnail.url,
-      public_id: thumbnail.public_id,
-    },
+    videoFile: videoFile.url,
+    thumbnail: thumbnail.url,
     owner: req.user?._id,
     isPublished: true,
   });
@@ -165,8 +150,6 @@ const publishAVideo = asyncHandler(async (req, res) => {
 
 const getVideoById = asyncHandler(async (req, res) => {
   const { video_id } = req.params;
-
-  console.log(video_id);
 
   if (!isValidObjectId(video_id)) {
     throw new ApiError(400, "Provide Valid Id");
@@ -263,9 +246,10 @@ const getVideoById = asyncHandler(async (req, res) => {
     },
   ]);
 
-  if (!video) {
+  if (!video.length > 0) {
     throw new ApiError(400, "Video Do not Exist");
   }
+  console.log("video✅✅✅", video);
   // increment Views
   await Video.findByIdAndUpdate(video_id, {
     $inc: {
@@ -314,15 +298,14 @@ const updateVideo = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Thumbnail is required");
   }
 
-  const oldThumbnail = video.thumbnail.public_id;
-
+  const oldThumbnail = video._id;
   if (!(await deleteFile(oldThumbnail))) {
     throw new ApiError(501, "Old File not deleted");
   }
 
   const thumbnail = await uploadOnCloudinary(thumbnailLocalPath);
 
-  if (!thumbnail) {
+  if (!thumbnail || !thumbnail.url) {
     throw new ApiError(501, "Thumbnail isn't Uploaded");
   }
 
@@ -332,10 +315,7 @@ const updateVideo = asyncHandler(async (req, res) => {
       $set: {
         title,
         description,
-        thumbnail: {
-          public_id: thumbnail.public_id,
-          url: thumbnail.url,
-        },
+        thumbnail: thumbnail.url, // Assuming thumbnail.url is a string
       },
     },
     { new: true }
@@ -396,7 +376,7 @@ const togglePublishStatus = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Can't find Video");
   }
   if (video?.owner.toString() !== req?.user._id.toString()) {
-    throw new ApiError(400, "You Cant Change Status");
+    throw new ApiError(400, "You Can't Change Status");
   }
 
   const updatedStatus = await Video.findByIdAndUpdate(

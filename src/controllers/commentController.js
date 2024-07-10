@@ -87,7 +87,6 @@ const getVideoComments = asyncHandler(async (req, res) => {
     page: parseInt(page, 10),
     limit: parseInt(limit, 10),
   };
-  // console.log(comments)
 
   const commentPaginate = await Comment.aggregatePaginate(comments, options);
 

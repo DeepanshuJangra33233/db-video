@@ -28,7 +28,6 @@ async function deleteFile(id) {
   try {
     if (!id) return null;
     const result = await cloudinary.uploader.destroy(id);
-    console.log("Deleted image:", result);
     return result;
   } catch (error) {
     console.error("Error deleting image:", error);

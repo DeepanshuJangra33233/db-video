@@ -110,7 +110,6 @@ const getSubscribedChannels = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Invalid Id Provided");
   }
 
-  console.log(subscriberId);
   const subscribedChannel = await Subscription.aggregate([
     {
       $match: {
@@ -168,8 +167,6 @@ const getSubscribedChannels = asyncHandler(async (req, res) => {
       },
     },
   ]);
-
-  console.log(subscribedChannel);
 
   return res
     .status(200)

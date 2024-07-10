@@ -57,7 +57,6 @@ const getChannelStats = asyncHandler(async (req, res) => {
       },
     },
   ]);
-  console.log(video);
 
   if (!totalSubscriber || !video) {
     throw new ApiError(500, "Cant Fetch Channel Stats");
