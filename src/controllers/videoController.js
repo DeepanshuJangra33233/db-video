@@ -12,7 +12,6 @@ const getAllVideos = asyncHandler(async (req, res) => {
   const pipeline = [];
 
   //Create search index in mongo db atlas
-
   if (query) {
     pipeline.push({
       $search: {
@@ -37,7 +36,7 @@ const getAllVideos = asyncHandler(async (req, res) => {
     });
   }
 
-  // Show Only where is Pulbished Field is true
+  // Show Only where is Published Field is true
 
   pipeline.push({
     $match: {
