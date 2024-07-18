@@ -20,7 +20,7 @@ const toggleSubscription = asyncHandler(async (req, res) => {
 
     return res
       .status(200)
-      .json(new ApiResponse(200, { subscribed: false }, "Unsubscribed"));
+      .json(new ApiResponse(200, "Unsubscribed", { subscribed: false }));
   }
 
   await Subscription.create({
@@ -30,7 +30,7 @@ const toggleSubscription = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(new ApiResponse(200, { subscribed: true }, "Subscribed"));
+    .json(new ApiResponse(200, "Subscribed", { subscribed: true }));
 });
 
 const getUserChannelSubscribers = asyncHandler(async (req, res) => {
@@ -96,12 +96,11 @@ const getUserChannelSubscribers = asyncHandler(async (req, res) => {
       },
     },
   ]);
-
   if (!subs) {
     throw new ApiError(501, "Failed to fetch");
   }
 
-  return res.status(200).json(new ApiResponse(200, subs, "Fetched"));
+  return res.status(200).json(new ApiResponse(200, "Fetched", subs));
 });
 
 const getSubscribedChannels = asyncHandler(async (req, res) => {

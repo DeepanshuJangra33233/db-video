@@ -13,23 +13,7 @@ import {
 const router = Router();
 router.use(verifyJWT); // Apply verifyJWT to all routes in  this file
 
-router
-  .route("/")
-  .get(getAllVideos)
-  .post(
-    upload.fields([
-      {
-        name: "videoFile",
-        maxCount: 1,
-      },
-      {
-        name: "thumbnail",
-        maxCount: 1,
-      },
-    ]),
-
-    publishAVideo
-  );
+router.route("/").get(getAllVideos).post(publishAVideo);
 
 router
   .route("/video/:video_id")

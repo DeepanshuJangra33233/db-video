@@ -8,7 +8,7 @@ const GetCurrent = asyncHandler(async (req, res) => {
   }
   return res
     .status(200)
-    .json(new ApiResponse(200, req.user, "Get current user successfully"));
+    .json(new ApiResponse(200, "Get current user successfully", req.user));
 });
 
 export { GetCurrent };
